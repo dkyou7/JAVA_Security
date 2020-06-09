@@ -17,7 +17,7 @@ public class AccountService {
     @Transactional
     public Long createUser(AccountForm form) {
         Account account = form.toEntity();
-        System.out.println("account = " + account);
-        return accountRepository.save(account).getId();
+        accountRepository.save(account);
+        return account.getId();
     }
 }
