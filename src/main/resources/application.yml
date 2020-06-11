@@ -13,7 +13,7 @@ spring:
       enabled: true
   jpa:
     hibernate:
-      ddl-auto: create  # 이 옵션은 애플리케이션 실행 시점에 테이블을 drop 하고, 다시 생성한다
+      ddl-auto: update  # 이 옵션은 애플리케이션 실행 시점에 테이블을 drop 하고, 다시 생성한다
     properties:
       hibernate:
         show_sql: true

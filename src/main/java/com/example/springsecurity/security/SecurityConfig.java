@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@EnableWebSecurity  // 이거 안해줘서 그동안 계속 안됬었음
+@EnableWebSecurity
 @Slf4j
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -62,7 +62,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
             .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login")                    // controller mapping
+                .loginProcessingUrl("/login_proc")      // th:action="@{/login_proc}"
+                .defaultSuccessUrl("/")
+                .permitAll();
     }
 
 
